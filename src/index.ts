@@ -1,12 +1,17 @@
+import "temporal-polyfill/full/global";
+
 import express from "express";
 import "dotenv/config";
 import movieRoutes from "./routes/movieRoutes"
+import authRoutes from "./routes/authRoutes"
 import { disconnect } from "../prisma/db";
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/movies', movieRoutes);
+app.use('/auth', authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Express + TypeScript server is running!");
