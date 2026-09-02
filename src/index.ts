@@ -4,6 +4,7 @@ import express from "express";
 import "dotenv/config";
 import movieRoutes from "./routes/movieRoutes"
 import authRoutes from "./routes/authRoutes"
+import watchlistRoutes from "./routes/watchlistRoutes"
 import { disconnect } from "../prisma/db";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/movies', movieRoutes);
 app.use('/auth', authRoutes);
+app.use("/watchlist", watchlistRoutes);
 
 app.get("/", (req, res) => {
   res.send("Express + TypeScript server is running!");
