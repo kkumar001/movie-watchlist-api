@@ -15,7 +15,7 @@ app.use('/movies', movieRoutes);
 app.use('/auth', authRoutes);
 app.use("/watchlist", watchlistRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send("Express + TypeScript server is running!");
 });
 

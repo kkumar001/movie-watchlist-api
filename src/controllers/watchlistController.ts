@@ -102,7 +102,7 @@ const updateWatchlistItem: RequestHandler = async (req, res) => {
         })
     }
 
-    await db.orm.public.WatchlistItem.where({
+    const updatedItem = await db.orm.public.WatchlistItem.where({
         id: watchlistItem.id
     }).update({
         rating,
@@ -114,10 +114,9 @@ const updateWatchlistItem: RequestHandler = async (req, res) => {
         status: 200,
         message: "Watchlist item updated successfully!",
         data: {
-            watchlistItem
+            watchlistItem: updatedItem
         }
     });
 }
 
-
-export { addToWatchlist, removeFromWatchlist, updateWatchlistItem }
+export { addToWatchlist, removeFromWatchlist, updateWatchlistItem };
